@@ -9,7 +9,7 @@ import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 
 function App() {
-  const [isDisabled,setisDisabled]=useState("false")
+  
   const[temparr,settemparr]=useState([])
   const [myarrlist,setmyarrlist] = useState([
     {id:1, name:"Nivetha"},
@@ -21,23 +21,18 @@ function App() {
     {id:7, name:"Rithu"},
     {id:8, name:"Jack"}
   ])
+
   function handleAdd(props){
     
     const updatedNames=[...temparr,props]
     settemparr(updatedNames)
     console.log(temparr)
-    // var container = myarrlist.some(function(data){
-    //   if(data.id === props.id){
-    //     return true
-    //   }
-    // })
-    // setisDisabled(container)
   }
  
   return (
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<ListComp myarrlist={myarrlist} onNameClick={handleAdd} />}></Route>
+    <Route path="/" element={<ListComp myarrlist={myarrlist} onNameClick={handleAdd}  temparr={temparr} />}></Route>
     <Route path="/favouritestudent" element={<FavComp myarrlist={myarrlist} temparr={temparr} settemparr={settemparr}/>}></Route>
   </Routes></BrowserRouter>)
 }
